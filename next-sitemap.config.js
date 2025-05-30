@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 // const blogPost = require("./public/posts/blogPosts");
 module.exports = {
-  siteUrl: "https://ciramic-quating.vercel.app",
+  siteUrl: "https://ceramic-coating-rust.vercel.app",
   generateRobotsTxt: true,
   transform: async (config, path) => {
     return {
