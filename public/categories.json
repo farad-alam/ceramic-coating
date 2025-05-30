@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Application & Removal",
+      "slug": "application-removal",
+      "description": "Guides and tutorials on how to properly apply and remove ceramic coatings from vehicles."
+    },
+    {
+      "id": 2,
+      "name": "Maintenance",
+      "slug": "maintenance",
+      "description": "Tips and best practices for maintaining your ceramic coating to ensure maximum longevity and performance."
+    },
+    {
+      "id": 3,
+      "name": "Troubleshooting",
+      "slug": "troubleshooting",
+      "description": "Solutions to common problems and issues that may arise with ceramic coatings."
+    },
+    {
+      "id": 4,
+      "name": "Product Knowledge",
+      "slug": "product-knowledge",
+      "description": "In-depth information about different types of ceramic coatings, their composition, and performance characteristics."
+    }
+  ]
+}

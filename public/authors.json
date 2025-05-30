@@ -1,0 +1,48 @@
+{
+  "authors": [
+    {
+      "id": 1,
+      "name": "Mike Reynolds",
+      "slug": "mike-reynolds",
+      "bio": "Mike is a certified detailer with over 15 years of experience in the automotive industry. He specializes in paint correction and ceramic coating applications.",
+      "avatar": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "socialLinks": {
+        "twitter": "https://twitter.com/mikereynolds",
+        "instagram": "https://instagram.com/mike_detailing"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Sarah Chen",
+      "slug": "sarah-chen",
+      "bio": "Sarah is an automotive engineer who transitioned to professional detailing. She brings a scientific approach to vehicle care and specializes in ceramic coating technology.",
+      "avatar": "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "socialLinks": {
+        "twitter": "https://twitter.com/sarahchen",
+        "linkedin": "https://linkedin.com/in/sarahchen"
+      }
+    },
+    {
+      "id": 3,
+      "name": "David Rodriguez",
+      "slug": "david-rodriguez",
+      "bio": "David owns a high-end detailing shop in California and has worked with luxury and exotic vehicles for over a decade. He's a specialist in ceramic coating applications.",
+      "avatar": "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "socialLinks": {
+        "instagram": "https://instagram.com/david_exotic_detail",
+        "youtube": "https://youtube.com/c/davidrodriguez"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Lisa Thompson",
+      "slug": "lisa-thompson",
+      "bio": "Lisa is a content creator specializing in automotive care. She has collaborated with major ceramic coating brands and produces educational content for DIY enthusiasts.",
+      "avatar": "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "socialLinks": {
+        "youtube": "https://youtube.com/c/lisathompson",
+        "instagram": "https://instagram.com/lisa_auto_care"
+      }
+    }
+  ]
+}
