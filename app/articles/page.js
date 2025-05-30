@@ -8,7 +8,7 @@ export const metadata = {
 
 export default async function ArticlesPage() {
   const articles = await getAllArticles();
-  console.log(articles);
+  // console.log(articles);
   
   return (
     <main className="container mx-auto px-4 py-8 sm:px-6 md:py-12">
