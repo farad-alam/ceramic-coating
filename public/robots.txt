@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://ceramic-coating-rust.vercel.app
+Host: https://ceramic-coating-neon.vercel.app
 
 # Sitemaps
-Sitemap: https://ceramic-coating-rust.vercel.app/sitemap.xml
+Sitemap: https://ceramic-coating-neon.vercel.app/sitemap.xml

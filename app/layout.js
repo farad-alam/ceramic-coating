@@ -33,7 +33,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <meta
+          name="google-site-verification"
+          content="ST1Hhm9DearRT78yeK7x1Qr3HHzcw5iUNYSGUguuMGk"
+        />
+      </head>
+
       <body
         className={`${inter.variable} font-sans min-h-screen flex flex-col`}
       >
@@ -43,11 +49,9 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-
           <Header />
           <div className="flex-grow">{children}</div>
           <Footer />
-
         </ThemeProvider>
       </body>
     </html>
