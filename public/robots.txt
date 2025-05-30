@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ceramic-coating-rust.vercel.app
+
+# Sitemaps
+Sitemap: https://ceramic-coating-rust.vercel.app/sitemap.xml
