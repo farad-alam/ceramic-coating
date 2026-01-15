@@ -14,7 +14,7 @@ export default function Markdown({ content }) {
     // Only use next/image for absolute URLs (e.g., https://...)
     if (src && src.startsWith("http")) {
       return (
-        <div className="relative my-6 h-auto w-full rounded-lg overflow-hidden">
+        <span className="relative my-6 block h-auto w-full rounded-lg overflow-hidden">
           <Image
             src={src}
             alt={alt || "Article image"}
@@ -22,7 +22,7 @@ export default function Markdown({ content }) {
             height={500}
             className="w-full h-auto"
           />
-        </div>
+        </span>
       );
     }
 

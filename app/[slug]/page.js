@@ -13,6 +13,7 @@ import { getCategoryNamesForArticle } from "@/lib/categories";
 import { formatDate } from "@/lib/utils";
 
 import Markdown from "@/components/article/Markdown";
+import PortableTextRenderer from "@/components/article/PortableTextRenderer";
 import ArticleSidebar from "@/components/article/ArticleSidebar";
 import AuthorCard from "@/components/article/AuthorCard";
 
@@ -102,7 +103,7 @@ export default async function ArticlePage({ params }) {
           <div className="mb-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
-              <span>{formatDate(article.publishDate)}</span>
+              <span suppressHydrationWarning>{formatDate(article.publishDate)}</span>
             </div>
 
             <div className="flex items-center gap-1">
@@ -124,20 +125,26 @@ export default async function ArticlePage({ params }) {
           </div>
 
           {/* Featured Image */}
-          <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg sm:h-96">
-            <Image
-              src={article.featuredImage}
-              alt={article.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
+          {article.featuredImage && (
+            <div className="relative mb-8 h-64 w-full overflow-hidden rounded-lg sm:h-96">
+              <Image
+                src={article.featuredImage}
+                alt={article.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
+          )}
 
           {/* Article Content */}
           <div className="prose prose-lg max-w-none dark:prose-invert">
-            <Markdown content={article.content} />
+            {article.source === 'sanity' ? (
+              <PortableTextRenderer content={article.content} />
+            ) : (
+              <Markdown content={article.content} />
+            )}
           </div>
 
           {/* Tags */}
