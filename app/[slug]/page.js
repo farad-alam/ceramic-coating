@@ -37,13 +37,20 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const siteUrl = "https://ceramic-coating-neon.vercel.app";
+  const canonicalUrl = `${siteUrl}/${article.slug}`;
+
   return {
     title: `${article.title} | CeramicPro`,
     description: article.excerpt,
     keywords: article.tags ? article.tags.join(", ") : "",
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: article.title,
       description: article.excerpt,
+      url: canonicalUrl,
       images: [
         {
           url: article.featuredImage,
@@ -67,8 +74,28 @@ export default async function ArticlePage({ params }) {
   const relatedArticles = await getRelatedArticles(article, 4);
   const categoryNames = await getCategoryNamesForArticle(article.categories);
 
+  // JSON-LD Structured Data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.excerpt,
+    image: article.featuredImage ? [article.featuredImage] : [],
+    datePublished: article.publishDate,
+    dateModified: article.publishDate, // Fallback as we don't track modified separately yet
+    author: author ? [{ "@type": "Person", "name": author.name, "url": `/authors/${author.slug}` }] : [{ "@type": "Person", "name": "CeramicPro Team" }],
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://ceramic-coating-neon.vercel.app/${article.slug}`
+    }
+  };
+
   return (
     <main className="container mx-auto px-4 py-8 sm:px-6 md:py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
         {/* Left Sidebar - For larger screens */}
         <div className="hidden lg:col-span-3 lg:block">
@@ -140,11 +167,13 @@ export default async function ArticlePage({ params }) {
 
           {/* Article Content */}
           <div className="prose prose-lg max-w-none dark:prose-invert">
-            {article.source === 'sanity' ? (
-              <PortableTextRenderer content={article.content} />
-            ) : (
-              <Markdown content={article.content} />
-            )}
+            <div className="prose prose-lg max-w-none dark:prose-invert">
+              {Array.isArray(article.content) ? (
+                <PortableTextRenderer content={article.content} />
+              ) : (
+                <Markdown content={article.content} />
+              )}
+            </div>
           </div>
 
           {/* Tags */}
