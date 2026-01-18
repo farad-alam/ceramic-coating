@@ -29,15 +29,17 @@ export default function ArticleCard({ article, className = '' }) {
 
       <div className="p-4 sm:p-6">
         <div className="mb-2 flex flex-wrap gap-2">
-          {article.categories && article.categories.slice(0, 2).map((categoryId) => (
-            <span
-              key={categoryId}
-              className="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary"
-            >
-              {/* We'll dynamically replace this with actual category names in the page component */}
-              Category {categoryId}
-            </span>
-          ))}
+          {article.categories && article.categories.slice(0, 2).map((category, index) => {
+            const catTitle = typeof category === 'object' ? category.title : category;
+            return (
+              <span
+                key={index}
+                className="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary"
+              >
+                {catTitle}
+              </span>
+            );
+          })}
         </div>
 
         <h3 className="mb-2 text-xl font-semibold leading-tight tracking-tight">

@@ -1,5 +1,4 @@
 const { createClient } = require('next-sanity');
-require('dotenv').config({ path: '.env.local' });
 
 const client = createClient({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -28,7 +27,6 @@ async function run() {
 
         if (Array.isArray(content) && content[0]?._type === 'block') {
             console.log('RESULT: Content is PORTABLE TEXT.');
-            console.log('Sample Block:', JSON.stringify(content[0], null, 2));
         } else if (typeof content === 'string') {
             console.log('RESULT: Content appears to be MARKDOWN or STRING.');
         } else {

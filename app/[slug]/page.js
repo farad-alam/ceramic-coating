@@ -40,9 +40,12 @@ export async function generateMetadata({ params }) {
   const siteUrl = "https://ceramic-coating-neon.vercel.app";
   const canonicalUrl = `${siteUrl}/${article.slug}`;
 
+  // Use manual meta description if provided, otherwise fallback to excerpt
+  const metaDescription = article.metadata?.description || article.excerpt;
+
   return {
     title: `${article.title} | CeramicPro`,
-    description: article.excerpt,
+    description: metaDescription,
     keywords: article.tags ? article.tags.join(", ") : "",
     alternates: {
       canonical: canonicalUrl,
@@ -111,9 +114,38 @@ export default async function ArticlePage({ params }) {
         <article className="lg:col-span-6">
           {/* Categories */}
           <div className="mb-4 flex flex-wrap gap-2">
-            {categoryNames.map((category, index) => (
+            {/* Direct categories from Sanity (Objects or Strings) */}
+            {article.categories.map((category, index) => {
+              // Handle object vs string (legacy)
+              const catTitle = typeof category === 'object' ? category.title : category;
+              const catSlug = typeof category === 'object' ? category.slug : null;
+
+              if (catSlug) {
+                return (
+                  <Link
+                    key={index}
+                    href={`/categories/${catSlug}`}
+                    className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary hover:bg-primary/20 transition-colors"
+                  >
+                    {catTitle}
+                  </Link>
+                );
+              }
+
+              return (
+                <span
+                  key={index}
+                  className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
+                >
+                  {catTitle}
+                </span>
+              );
+            })}
+
+            {/* Fallback for JSON articles that imply categories via external lookup */}
+            {categoryNames.length > 0 && article.source !== 'sanity' && categoryNames.map((category, index) => (
               <span
-                key={index}
+                key={`legacy-${index}`}
                 className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
               >
                 {category}

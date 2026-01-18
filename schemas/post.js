@@ -64,6 +64,19 @@ export default defineType({
             title: 'Body',
             type: 'blockContent',
         }),
+        defineField({
+            name: 'metadata',
+            title: 'Metadata',
+            type: 'object',
+            fields: [
+                defineField({
+                    name: 'description',
+                    title: 'Description',
+                    type: 'text',
+                    rows: 3
+                }),
+            ]
+        }),
     ],
 
     preview: {

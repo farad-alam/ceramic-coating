@@ -23,7 +23,7 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
-  
+
   // After mounting, we can safely show the UI that depends on the theme
   useEffect(() => {
     setMounted(true);
