@@ -5,8 +5,28 @@ import { urlForImage } from '@/lib/sanity';
 
 // Component to render images from Sanity
 const SampleImageComponent = ({ value, isInline }) => {
+    // Check if the image has a direct src (external/AI generated)
+    if (value.src) {
+        return (
+            <div className="my-8 relative w-full h-96">
+                <Image
+                    src={value.src}
+                    alt={value.alt || 'Article image'}
+                    fill
+                    className="object-cover rounded-lg"
+                />
+            </div>
+        );
+    }
+
+    // Otherwise, assume it's a Sanity asset reference
     const { width, height } = value;
-    const imageUrl = urlForImage(value).url();
+    let imageUrl = null;
+    try {
+        imageUrl = urlForImage(value).url();
+    } catch (e) {
+        console.warn("Failed to generate image URL:", e);
+    }
 
     if (!imageUrl) return null;
 
